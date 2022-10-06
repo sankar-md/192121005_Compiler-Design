@@ -1,0 +1,18 @@
+%{
+#include<stdio.h>
+#include<stdlib.h>
+int flag=0;
+%}
+%%
+[a-z . 0-9]+@[a-z]+".com"|".in" { flag=1; }
+%%
+int yywrap(void){}
+int main()
+{
+printf("Enter the email to check :");
+yylex();
+if(flag==1)
+printf("Accepted");
+else
+printf("Not Accepted");
+}
