@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char a[10],A,B,alpha[50],temp[2];
+	char s1[10],s2[10];
+	int i,n,j,ind2=0,k=0;
+	printf("enter the grammar : ");
+	scanf("%s",&a);
+ 	A=a[0];
+ 	if(a[0]==a[3]){
+ 	for(i=0;a[i];i++){
+ 		if(a[i]=='|')
+ 		ind2=i;
+	 }
+	if(ind2==0)
+	printf("invalid grammer...");
+	else{
+		B=a[ind2+1];
+		for(i=0;a[i];i++){
+			if(i>3 && i<ind2){
+				alpha[k]=a[i];
+				k++;
+			}
+			else if(i<3){
+				s1[i]=a[i];
+				s2[i]=a[i];
+			}
+		}
+		j=3;
+		for(i=0;i<k;i++){
+			s2[j]=alpha[i];
+			j++;
+		}
+		s1[3]=B;
+		s1[4]=A;
+		s1[5]='`';
+		//s2[3]=alpha[0];
+		//s2[4]=alpha[1];
+		s2[j]=A;
+		s2[j+1]='`';
+		s2[j+2]='|';
+		s2[j+3]='~';
+		for(i=0;s1[i];i++)
+		printf("%c",s1[i]);
+		printf("\n");
+		for(i=0;s2[i];i++)
+		printf("%c",s2[i]);
+		}
+	}
+	else
+	printf("there is no left recursion!");
+}
