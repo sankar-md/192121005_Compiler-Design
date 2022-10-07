@@ -1,0 +1,29 @@
+%{
+   #include<stdio.h>
+   int flag=0;
+%}
+  
+%%
+("https://"*"www."+[a-z]+".com") {flag=1;}
+("https://"*"www."+[a-z]+".in") {flag=1;}
+("https://"*"www."+[a-z]+".edu") {flag=1;}
+("https://"*"www."+[a-z]+".gov") {flag=1;}
+("https://"*"www."+[a-z]+".co") {flag=1;}
+.+ {printf("Invalid");}
+
+%%
+int yywrap(){
+return 1;
+}
+int main()
+{
+    printf("Enter the mail:");
+    yylex();
+    if(flag==1){
+	printf("Valid....");
+	}
+   else{
+	printf("Invalid...");
+	}
+    return 0;
+} 
