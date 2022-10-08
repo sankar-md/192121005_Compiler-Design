@@ -1,0 +1,17 @@
+%{
+#include<stdio.h>
+%}
+%%
+["+"|"-"|"*"|"/"|"%"] { printf("it is valid\nit is a arithmetic operator:"); }
+[">"|"<"|"!"|"="] { printf("\nit is valid\nit is a relational operator:"); }
+["&"|"^"|"~"|"|"] { printf("\nit is valid\nit is a bitwise operator:"); }
+.+ { printf("\nit is not a valid operator:"); }
+%%
+int yywrap(){
+return 1;
+}
+int main(int argc,char*argv[]){
+printf("enter the operator:");
+yylex();
+return 0;
+}
