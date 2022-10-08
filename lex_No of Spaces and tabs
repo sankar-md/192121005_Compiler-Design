@@ -1,0 +1,22 @@
+%{
+#include<stdio.h>
+int lc=0, sc=0, tc=0, ch=0; /*Global variables*/
+%}
+
+%%
+([ ])+ sc++;
+(\t)+ tc++; 
+(\n)+ lc++; 
+. ch++;
+%%
+
+int yywrap(){};
+int main()
+{
+	yylex();
+	
+	printf("\nNo. of lines=%d", lc);
+	printf("\nNo. of spaces & tabs =%d,%d", sc, tc);
+	
+	
+}
