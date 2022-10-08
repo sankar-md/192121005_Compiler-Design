@@ -1,0 +1,13 @@
+%{
+int c=0;
+%}
+%%
+[0-9] {c++;}
+%%
+int yywrap(void){}
+int main(char argc[] ,char *argv[]){
+yyin=fopen(argv[1],"r");
+yylex();
+printf("\nno of consonants : %d",c);
+fclose(yyin);
+}
